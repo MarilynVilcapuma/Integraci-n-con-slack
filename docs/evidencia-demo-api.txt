@@ -1,0 +1,21 @@
+=== Arranque de la aplicacion (conexion real a PostgreSQL/Neon) ===
+HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@50df37eb
+Hibernate:
+    create table productos (
+        codigo varchar(50) not null,
+        nombre varchar(255) not null,
+        precio float(53) not null,
+        stock integer not null,
+        primary key (codigo)
+    )
+Started GestionProductosApplication in 5.023 seconds
+
+=== POST /api/productos (caso valido) ===
+Request: {"codigo":"P001","nombre":"Teclado mecanico","precio":150.0,"stock":20}
+Response: 201 Created
+Body: {"codigo":"P001","nombre":"Teclado mecanico","precio":150.0,"stock":20}
+
+=== POST /api/productos (caso invalido: nombre vacio) ===
+Request: {"codigo":"P002","nombre":"","precio":100.0,"stock":5}
+Response: 400 Bad Request
+Body: El nombre del producto no es valido:

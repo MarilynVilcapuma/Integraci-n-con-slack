@@ -1,0 +1,5 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+S08_AP3_RETO3 - Gestion de Productos,com.reto3.productos.service.impl,ProductoServiceImpl,0,102,1,19,0,18,1,16,0,7
+S08_AP3_RETO3 - Gestion de Productos,com.reto3.productos.rest,ProductoController,0,29,0,0,0,7,0,3,0,3
+S08_AP3_RETO3 - Gestion de Productos,com.reto3.productos.model,Producto,0,68,0,4,0,18,0,11,0,9
+S08_AP3_RETO3 - Gestion de Productos,com.reto3.productos.exception,ProductoInvalidoException,0,4,0,0,0,2,0,1,0,1

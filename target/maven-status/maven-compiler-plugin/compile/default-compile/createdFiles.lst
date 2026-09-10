@@ -1,0 +1,7 @@
+com/reto3/productos/repository/ProductoRepository.class
+com/reto3/productos/service/ProductoService.class
+com/reto3/productos/model/Producto.class
+com/reto3/productos/exception/ProductoInvalidoException.class
+com/reto3/productos/service/impl/ProductoServiceImpl.class
+com/reto3/productos/GestionProductosApplication.class
+com/reto3/productos/rest/ProductoController.class

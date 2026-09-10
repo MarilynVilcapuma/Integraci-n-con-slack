@@ -1,0 +1,4 @@
+com/reto3/productos/model/ProductoTest.class
+com/reto3/productos/service/impl/ProductoServiceImplTest.class
+com/reto3/productos/service/impl/ProductoServiceParametrizedTest.class
+com/reto3/productos/rest/ProductoControllerTest.class
