@@ -5,9 +5,9 @@ spring:
   application:
     name: gestion-productos
   datasource:
-    url: jdbc:postgresql://ep-red-water-are1utxf-pooler.c-4.us-west-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require
-    username: neondb_owner
-    password: npg_Ai0bzPjJu7Ca
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     open-in-view: false

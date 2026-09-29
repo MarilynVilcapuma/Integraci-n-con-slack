@@ -53,15 +53,20 @@ S08_AP3_RETO3/
 
 ## Base de datos
 
-El `datasource` apunta a una instancia PostgreSQL administrada por **Neon**, configurada
-directamente en `src/main/resources/application.yml`. `spring.jpa.hibernate.ddl-auto: update`
-crea/actualiza automáticamente la tabla `productos` al iniciar la aplicación.
+El `datasource` apunta a una instancia PostgreSQL administrada por **Neon**. Las credenciales
+ya **no** están en `application.yml`: se leen desde variables de entorno para poder subir el
+repositorio sin exponer secretos. `spring.jpa.hibernate.ddl-auto: update` crea/actualiza
+automáticamente la tabla `productos` al iniciar la aplicación.
 
-> ⚠️ Nota de seguridad: `application.yml` contiene el usuario y la contraseña de la base de
-> datos en texto plano (a pedido explícito para este entregable). Si el repositorio se va a
-> subir a un servicio como GitHub para la entrega, considera rotar la contraseña de la base
-> de datos después de la entrega, o hacer el repositorio privado, ya que cualquiera con
-> acceso al repositorio podrá leer y modificar esta base de datos.
+Variables de entorno requeridas para levantar la aplicación:
+
+| Variable      | Descripción                                                                 |
+|---------------|------------------------------------------------------------------------------|
+| `DB_URL`      | URL JDBC de la base, ej. `jdbc:postgresql://<host>/neondb?sslmode=require&channel_binding=require` |
+| `DB_USERNAME` | Usuario de la base de datos                                                  |
+| `DB_PASSWORD` | Contraseña de la base de datos                                               |
+
+Si alguna falta, la aplicación no arranca (fail-fast) en lugar de arrancar mal configurada.
 
 ## Cómo ejecutar
 
@@ -77,9 +82,22 @@ de líneas sea de al menos el 80 % (regla configurada en `pom.xml`). **Ninguna p
 conecta a la base de datos real** (las dependencias se mockean), tal como recomienda el
 material del curso.
 
-Para levantar la aplicación (sí requiere conexión a la base de datos real):
+Para levantar la aplicación (sí requiere conexión a la base de datos real), primero define las
+variables de entorno y luego ejecuta `mvn spring-boot:run`:
 
 ```bash
+# Linux/macOS/Git Bash
+export DB_URL="jdbc:postgresql://<host>/neondb?sslmode=require&channel_binding=require"
+export DB_USERNAME="neondb_owner"
+export DB_PASSWORD="<tu-password>"
+mvn spring-boot:run
+```
+
+```powershell
+# PowerShell
+$env:DB_URL="jdbc:postgresql://<host>/neondb?sslmode=require&channel_binding=require"
+$env:DB_USERNAME="neondb_owner"
+$env:DB_PASSWORD="<tu-password>"
 mvn spring-boot:run
 ```
 
