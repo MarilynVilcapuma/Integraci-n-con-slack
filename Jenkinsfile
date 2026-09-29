@@ -6,6 +6,10 @@ pipeline {
         jdk 'JDK17'
     }
 
+    triggers {
+        pollSCM('H/5 * * * *')
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -17,14 +21,14 @@ pipeline {
         stage('Compilar') {
             steps {
                 echo 'Compilando el proyecto...'
-                sh 'mvn -B clean compile'
+                bat 'mvn -B clean compile'
             }
         }
 
         stage('Pruebas unitarias y parametrizadas') {
             steps {
                 echo 'Ejecutando pruebas unitarias y parametrizadas (JUnit 5 + Mockito)...'
-                sh 'mvn -B test'
+                bat 'mvn -B test'
             }
             post {
                 always {
@@ -36,7 +40,7 @@ pipeline {
         stage('Reporte de cobertura (JaCoCo)') {
             steps {
                 echo 'Generando reporte de cobertura con JaCoCo...'
-                sh 'mvn -B jacoco:report'
+                bat 'mvn -B jacoco:report'
             }
             post {
                 always {
@@ -51,7 +55,7 @@ pipeline {
         stage('Verificar meta de cobertura') {
             steps {
                 echo 'Verificando que la cobertura minima (80% lineas) se cumpla...'
-                sh 'mvn -B jacoco:check'
+                bat 'mvn -B jacoco:check'
             }
         }
     }
